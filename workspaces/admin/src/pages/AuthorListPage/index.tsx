@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useId, useMemo, useState } from 'react';
-import _ from 'underscore';
 import { create } from 'zustand';
 
 import { useAuthorList } from '../../features/authors/hooks/useAuthorList';
@@ -184,17 +183,17 @@ export const AuthorListPage: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {_.map(filteredAuthorList, (author) => (
-                  <Tr key={author.id}>
+                {filteredAuthorList.map((a) => (
+                  <Tr key={a.id}>
                     <Td textAlign="center" verticalAlign="middle">
-                      <Button colorScheme="teal" onClick={() => modalState.openDetail(author.id)} variant="solid">
+                      <Button colorScheme="teal" onClick={() => modalState.openDetail(a.id)} variant="solid">
                         詳細
                       </Button>
                     </Td>
                     <Td verticalAlign="middle">
-                      <Text fontWeight="bold">{author.name}</Text>
+                      <Text fontWeight="bold">{a.name}</Text>
                       <Text color="gray.400" fontSize="small">
-                        {author.id}
+                        {a.id}
                       </Text>
                     </Td>
                   </Tr>
