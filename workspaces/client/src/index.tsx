@@ -5,10 +5,12 @@ import { SWRConfig } from 'swr';
 import { AdminApp } from '@wsh-2024/admin/src/index';
 import { ClientApp } from '@wsh-2024/app/src/index';
 
+import { preloadImages } from './utils/preloadImage';
 import { registerServiceWorker } from './utils/registerServiceWorker';
 
 const main = async () => {
   await registerServiceWorker();
+  await preloadImages();
 
   document.addEventListener('DOMContentLoaded', () => {
     const rootElement = document.getElementById('root');
